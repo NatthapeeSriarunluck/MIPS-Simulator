@@ -175,9 +175,13 @@ void process_instruction()
             NEXT_STATE.HI = dividend % divisor;
             NEXT_STATE.PC = CURRENT_STATE.PC + 4;
             break;
-        // case 0xC: // syscall
-        //     NEXT_STATE.PC = CURRENT_STATE.PC + 4;
-        //     break;
+        case 0xC: // syscall
+            printf("syscall\n");
+            if (CURRENT_STATE.REGS[2] == 0x0A)
+            {
+                RUN_BIT = 0;
+            }
+            break;
         default:
             break;
         }
